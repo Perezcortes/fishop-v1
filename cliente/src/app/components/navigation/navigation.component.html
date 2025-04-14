@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FISHOP</title>
+    <link rel="website icon" type="png" href="../../../assets/logo.png">
+    <!-- Import Google Icon Font -->
+    <link rel="stylesheet" src="../../../assets/materialize-css/dist/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Let the browser know the website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../navigation/navigation.component.css">
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a routerLink="/home/principal" class="brand-logo">
+                    <img src="../../../assets/logonav.png" alt="Logo" class="logo-img">FISHOP
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a id="ayudaButton" class="modal-trigger" href="#modalSearch"><i
+                                class="material-icons">search</i>¿Qué estás buscando?</a></li>
+                    <li><a routerLink="/home/login"><i class="material-icons">account_circle</i><span>¡Hola! Inicia
+                                sesión<br>Ó puedes registrarte</span></a></li>
+                    <li><a routerLink="/home/carrito"><i class="material-icons">local_grocery_store</i></a></li>
+                    <li><a routerLink="/home/producto"><i class="material-icons">more_vert</i><span>Admin</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--<div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a routerLink="#!">Categorias</a></li>
+                <li class="tab col s3"><a routerLink="#!">Señuelos</a></li>
+                <li class="tab col s3"><a routerLink="#!">Combos</a></li>
+                <li class="tab col s3"><a routerLink="#!">Accesorios</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Modal de búsqueda -->
+    <div #modalSearch id="modalSearch" class="modal">
+        <div class="modal-content">
+            <h4>¿Qué estás buscando?</h4>
+            <div class="input-field">
+                <input type="text" id="searchInput" #searchInputField text="Introduce tu búsqueda">
+                <label for="searchInput">Búsqueda por nombre, categoria o marca</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="buscar()" class="btn waves-effect waves-light right">Buscar</button>
+            <a id="salirBtn" class="waves-effect waves-light btn right" (click)="cerrarModal()">
+                <i class="material-icons left">exit_to_app</i>Salir
+            </a>
+        </div>
+        <!-- Nueva área para mostrar resultados -->
+        <div class="resultados-busqueda">
+            <!-- Aquí se mostrarán los resultados -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

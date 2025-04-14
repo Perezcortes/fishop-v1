@@ -1,0 +1,22 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#modalIngreso {
+  max-width: 600px;
+}
+
+#modalIngreso .input-field {
+  margin-bottom: 20px; /* Ajusta la distancia entre los campos y los bordes del modal */
+}

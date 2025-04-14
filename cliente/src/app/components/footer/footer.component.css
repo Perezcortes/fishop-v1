@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .page-footer {
+    margin-top: auto;
+    background-color: #43797a; /* Color de fondo del footer */
+    color: white; /* Color del texto del footer */
+    padding-top: 10px;
+  }
+  
+  .social {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social a {
+    display: inline-block; /* Permite aplicar estilos de ancho y alto */
+    color: rgb(0, 0, 0); /* Color del ícono */
+    font-size: 26px; /* Tamaño del ícono */
+    margin: 0 20px; /* Espacio entre los íconos */
+    text-decoration: none; /* Evitar subrayado en los enlaces */
+    transition: color 0.3s; /* Transición para el cambio de color */
+    border-radius: 50%; /* Agregado para hacer el ícono circular */
+    overflow: hidden; /* Asegura que el ícono sea completamente circular */
+    width: 40px; /* Ancho inicial del ícono */
+    height: 40px; /* Altura inicial del ícono */
+    line-height: 40px; /* Centra el texto verticalmente en el ícono */
+    text-align: center; /* Centra el texto horizontalmente en el ícono */
+  }
+  
+  .social a:hover {
+    color: #379724; /* Color que se mostrará al pasar el mouse sobre el ícono */
+    background-color: rgb(11, 216, 216); /* Color de fondo al pasar el mouse para iluminar */
+  }
+  
+  .social i {
+    display: block;
+    line-height: 40px; /* Alinea verticalmente el ícono en su contenedor */
+  }
+  

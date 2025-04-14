@@ -1,0 +1,1840 @@
+﻿{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.1",
+        "title": "REST API TIENDA FISHOP",
+        "description": "<html><body>Documentacion de pagina web para compra de accesorios de pesca</body></html>",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "3.131.157.117:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Administrador",
+            "description": "API para obtener información del administrador"
+        },
+        {
+            "name": "Producto",
+            "description": "API para obtener información de los productos de pesca"
+        },
+        {
+            "name": "Usuario",
+            "description": "API para obtener información de los usuarios de FISHOP"
+        },
+        {
+            "name": "Venta",
+            "description": "API para obtener información de las ventas de los accesorios de pesca"
+        },
+        {
+            "name": "Carrito",
+            "description": "API para obtener información de los carritos generados"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/administrador/insertarAdministrador": {
+            "post": {
+                "summary": "Creando un administrador",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Administrador",
+                        "in": "body",
+                        "description": "Informacion del administrador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevoadministrador"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Administrador"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/administrador/eliminarAdministrador/{id}": {
+            "delete": {
+                "tags": [
+                    "Administrador"
+                ],
+                "summary": "Eliminar el administrador de la tienda fishop dado su identificador",
+                "description": "<p>Servicio que elimina el administrador de la tienda fishop dado su identificador enviado</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del administrador",
+                        "type": "number",
+                        "default": "4"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/administrador/modificarAdministrador/{id}": {
+            "put": {
+                "summary": "Actualizar la informacion del administrador de la tienda de pesca",
+                "description": "<p>Servicio que permite modificar la informaciòn del administrador de la tienda de pesa, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del administrador",
+                        "type": "number",
+                        "default": "3"
+                    },
+                    {
+                        "name": "Administrador",
+                        "in": "body",
+                        "description": "Nombre del administrador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevoadministrador"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Administrador"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/administrador/mostrarTodosAdministrador": {
+            "get": {
+                "tags": [
+                    "Administrador"
+                ],
+                "summary": "Listado de todos los administradores con acceso a la pagina web.",
+                "description": "<p>Servicio que devuelve informacion detallada de los administradores etc.</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_admin": 1,
+                                    "nombre_admin": "Mario Ramos",
+                                    "correo_admin": "Mariora@gmail.com",
+                                    "contrasena_admin": "12345M"
+                                },
+                                {
+                                    "id_admin": 2,
+                                    "nombre_admin": "Enrique Ramos",
+                                    "correo_admin": "Enriquera@gmail.com",
+                                    "contrasena_admin": "12345E"
+                                },
+                                {
+                                    "id_admin": 3,
+                                    "nombre_admin": "Omar Perez",
+                                    "correo_admin": "Omarp@gmail.com",
+                                    "contrasena_admin": "12345O"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Administradores"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/administrador/mostrarAdministrador/{id}": {
+            "get": {
+                "tags": [
+                    "Administrador"
+                ],
+                "summary": "Informacion asociada al administrador, si es que existe en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la información detallada del administrador soliciado</p><p>&nbsp;</p><p><em><strong>¿Cuál es del usuario de este id?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_admin": 1,
+                                    "nombre_admin": "Mario Ramos",
+                                    "correo_admin": "Mariora@gmail.com",
+                                    "contrasena_admin": "12345M"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Administradores"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del administrador",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/insertarProducto": {
+            "post": {
+                "summary": "Insertando un producto",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Producto",
+                        "in": "body",
+                        "description": "Informacion del producto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevoproducto"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Producto"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/producto/eliminarProducto/{id}": {
+            "delete": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Eliminar el producto de la tienda fishop dado su identificador",
+                "description": "<p>Servicio que elimina el producto de la tienda fishop dado su identificador enviado</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/modificarProducto/{id}": {
+            "put": {
+                "summary": "Actualizar la informacion del producto de la tienda de pesca",
+                "description": "<p>Servicio que permite modificar la informaciòn del producto de la tienda de pesa, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "name": "Producto",
+                        "in": "body",
+                        "description": "Nombre del producto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevoproducto"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Producto"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/producto/mostrarTodosProducto": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Listado de todos los productos disponibles en la pagina web.",
+                "description": "<p>Servicio que devuelve informacion detallada de los productos etc.</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_producto": 3,
+                                    "nombre": "Popper",
+                                    "descripcion": "Popper para lobina 8cm de 20gm",
+                                    "precio": 50,
+                                    "marca": "Rapala",
+                                    "cantidas": "5",
+                                    "categoria": "Señuelo de agua dulce"
+                                },
+                                {
+                                    "id_producto": 4,
+                                    "nombre": "Linea de fluorocarbono",
+                                    "descripcion": "Linea 200mts, 0.5mm",
+                                    "precio": 100,
+                                    "marca": "Calema",
+                                    "cantidas": "7",
+                                    "categoria": "Lineas de pesca"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/mostrarProducto/{id}": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Informacion asociada al producto, si es que existe en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la información detallada del producto solicitado</p><p>&nbsp;</p><p><em><strong>¿Cuál es del usuario de este id?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_producto": 4,
+                                    "nombre": "Linea de fluorocarbono",
+                                    "descripcion": "Linea 200mts, 0.5mm",
+                                    "precio": 100,
+                                    "marca": "Calema",
+                                    "cantidas": "7",
+                                    "categoria": "Lineas de pesca"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "4"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/mostrarCategoriaProducto/{id}": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Informacion asociada a la categoria del producto en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la categoria del producto solicitado</p><p></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "categoria": "Lineas de pesca"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/mostrarMarcaProducto/{id}": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Muestra la marca de un producto ",
+                "description": "<p>Servicio que devuelve la marca de un producto en especifico usando su id</p><p></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "marca": "Rapala"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/mostrarporMarcaProducto/{nombre_marca}": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Muestra los productos por nombre de la marca",
+                "description": "<p>Servicio que devuelve todos los productos por medio del nombre de la marca</p><p></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "marca": "Rapala"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "nombre_marca",
+                        "in": "path",
+                        "required": true,
+                        "description": "nombre de la marca",
+                        "type": "string",
+                        "default": "Marca"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/mostrarCantidadProducto/{id}": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Muestra la cantidad de un producto ",
+                "description": "<p>Servicio que devuelve la cantidad disponible de un producto en especifico usando su id</p><p></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "cantidad": "5"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/producto/obtenerNombreProducto/:id": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Muestra el nombre de un producto",
+                "description": "<p>Servicio que devuelve el nombre de un producto por medio de su id</p><p></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_producto": "Señuelo Minow"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Productos"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+
+        "/api/usuario/insertarUsuario": {
+            "post": {
+                "summary": "Creando un usuario",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Usuario",
+                        "in": "body",
+                        "description": "Informacion del usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevousuario"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Usuario"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/usuario/eliminarUsuario/{id}": {
+            "delete": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Eliminando el usuario de la tienda fishop dado su identificador",
+                "description": "<p>Servicio que elimina el producto de la tienda fishop dado su identificador enviado</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del producto",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/usuario/modificarUsuario/{id}": {
+            "put": {
+                "summary": "Actualizar la informacion del usuario de la tienda de pesca",
+                "description": "<p>Servicio que permite modificar la informaciòn del usuario de la tienda de pesa, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del usuario",
+                        "type": "number",
+                        "default": "12"
+                    },
+                    {
+                        "name": "Usuario",
+                        "in": "body",
+                        "description": "Nombre del usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevousuario"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Usuario"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/usuario/mostrarTodosUsuario": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Listado de todos los usuarios dados de alta en la pagina web.",
+                "description": "<p>Servicio que devuelve informacion detallada de los usuarios etc.</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_usuario": 1,
+                                    "nombre_us": "Jose Perez",
+                                    "correo_us": "Josep@gmail.com",
+                                    "contrasena_us": "12345Jp"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/usuario/mostrarUsuario/{id}": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Informacion asociada al usuario, si es que existe en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la información detallada del usuario solicitado</p><p>&nbsp;</p><p><em><strong>¿Cuál es del usuario de este id?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_usuario": 1,
+                                    "nombre_us": "Jose Perez",
+                                    "correo_us": "Josep@gmail.com",
+                                    "contrasena_us": "12345Jp"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del usuario",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/usuario/ValidarUsuario": {
+            "post": {
+                "summary": "Validadno un usuario",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Usuario",
+                        "in": "body",
+                        "description": "Informacion del usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuarios"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Usuario"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se valido con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/venta/insertarVenta": {
+            "post": {
+                "summary": "Insertando una venta",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Venta",
+                        "in": "body",
+                        "description": "Informacion de la venta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevaventa"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Venta"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/venta/eliminarVenta/{id}": {
+            "delete": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Eliminar la venta de la tienda fishop dado su identificador",
+                "description": "<p>Servicio que elimina la venta de la tienda fishop dado su identificador</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la venta",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/venta/modificarVenta/{id}": {
+            "put": {
+                "summary": "Actualizar la informacion de la venta de la tienda de pesca",
+                "description": "<p>Servicio que permite modificar la informacion de la venta de la tienda de pesa, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la venta",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "name": "Venta",
+                        "in": "body",
+                        "description": "Nombre de la venta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevaventa"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Venta"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/venta/mostrarTodasVenta": {
+            "get": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Listado de todas las ventas generadas de la pagina web.",
+                "description": "<p>Servicio que devuelve informacion detallada de todas las ventas generadas etc.</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_venta": 1,
+                                    "id_usuario": 1,
+                                    "id_carrito": 1,
+                                    "cantidad": 10,
+                                    "precio_unitario": 100.00,
+                                    "fecha": "30-11-23"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/venta/mostrarVenta/{id}": {
+            "get": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Informacion asociada a la venta, si es que existe en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la información detallada de la venta solicitada</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_venta": 1,
+                                    "id_usuario": 1,
+                                    "id_carrito": 1,
+                                    "cantidad": 10,
+                                    "precio_unitario": 100.00,
+                                    "fecha": "30-11-23"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la venta",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/venta/mostrarporFechaVenta/{fecha}": {
+            "get": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Informacion asociada a la venta de una fecha en especifico",
+                "description": "<p>Servicio que devuelve la información detallada de la venta apartir de una fecha en especifico</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "fecha": "30-11-23"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "fecha",
+                        "in": "path",
+                        "required": true,
+                        "description": "Fecha de la venta",
+                        "type": "string",
+                        "default": "00-00-0000"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/venta/mostrarTotalVenta/{id}": {
+            "get": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Informacion asociada al total de una venta",
+                "description": "<p>Servicio que devuelve la información acerca del precio total de una venta/p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "Total": 10.1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la venta",
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/venta/mostrarCarritoVenta/{id}": {
+            "get": {
+                "tags": [
+                    "Venta"
+                ],
+                "summary": "Informacion asociada al carrito de la venta",
+                "description": "<p>Servicio que devuelve la información del carrito asociado a la venta, se mostraran toda la informacion del carrito/p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_carrito": 1,
+                                    "id_usuario": 1,
+                                    "id_producto": 1,
+                                    "cantidad": 10,
+                                    "estado_carrito": "enviado",
+                                    "precio_total": 100.00
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Venta"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador del carrito",
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/carrito/insertarCarrito": {
+            "post": {
+                "summary": "Insertando un carrito",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Carrito",
+                        "in": "body",
+                        "description": "Informacion detallada del carrito para insertar uno nuevo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevocarrito"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Carrito"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/carrito/eliminarCarrito/{id}": {
+            "delete": {
+                "tags": [
+                    "Carrito"
+                ],
+                "summary": "Eliminar el carrito de la tienda fishop dado su identificador",
+                "description": "<p>Servicio que elimina la existencia del carrito de la tienda fishop dado su identificador enviado</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del carrito",
+                        "type": "number",
+                        "default": "1"
+                    }, 
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/carrito/modificarCarrito/{id}": {
+            "put": {
+                "summary": "Actualizar la informacion del carrito de la tienda de pesca",
+                "description": "<p>Servicio que permite modificar la informacion del carrito de la tienda de pesa, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del carrito",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "name": "Carrito",
+                        "in": "body",
+                        "description": "Nombre del carrito",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Nuevocarrito"
+                        }
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ],
+                "tags": [
+                    "Carrito"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/carrito/mostrarTodosCarrito": {
+            "get": {
+                "tags": [
+                    "Carrito"
+                ],
+                "summary": "Listado de todos los carritos generados en la pagina web.",
+                "description": "<p>Servicio que devuelve informacion de todos los carritos generados en la pagina.</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_carrito": 1,
+                                    "id_usuario": 1,
+                                    "id_producto": 1,
+                                    "cantidad": 10,
+                                    "estado_carrito": "enviado",
+                                    "precio_total": 100.00
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carrito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/carrito/mostrarCarrito/{id}": {
+            "get": {
+                "tags": [
+                    "Carrito"
+                ],
+                "summary": "Informacion asociada al carrito, si es que existe en la tienda de pesca",
+                "description": "<p>Servicio que devuelve la información detallada del carrito solicitado</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_venta": 1,
+                                    "id_usuario": 1,
+                                    "id_producto": 1,
+                                    "cantidad": 10,
+                                    "estado_carrito": "enviado",
+                                    "precio_total": 100.00
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carrito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del carrito",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        },
+        "/api/carrito/mostrarEstadocarrito/{id}": {
+            "get": {
+                "tags": [
+                    "Carrito"
+                ],
+                "summary": "Informacion asociada al carrito para saber su estado",
+                "description": "<p>Servicio que devuelve la información detallada del estado del carrito si esta en pendiente, en proceso de entrega o entregado. </p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "estado_carrito": "enviado"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Carrito"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador del carrito",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "description": "apiKey",
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "default": "eyJhbGciOiJIUzI1NiJ9.ZXJpa3VlQGdtYWlsLmNvbQ.v7atXtnZ9F14ahwqCSjYKQirsvjs5aWQ4MrPz-BCBSk"
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Administrador": {
+            "type": "object",
+            "properties": {
+                "id_admin": {
+                    "type": "number",
+                    "description": "Codigo que permite identificar al administrador"
+                },
+                "nombre_admin": {
+                    "type": "string",
+                    "description": "Nombre del administrador"
+                },
+                "correo_admin": {
+                    "type": "string",
+                    "description": "Correo del administrador"
+                },
+                "contrasena_admin": {
+                    "type": "string",
+                    "description": "Contrasena del administrador"
+                }
+            }
+        },
+        "Nuevoadministrador": {
+            "type": "object",
+            "properties": {
+                "nombre_admin": {
+                    "type": "string",
+                    "description": "Nombre del administrador"
+                },
+                "correo_admin": {
+                    "type": "string",
+                    "description": "Correo del administrador"
+                },
+                "contrasena_admin": {
+                    "type": "string",
+                    "description": "Contrasena del administrador"
+                }
+            }
+        },
+        "Administradores": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Administrador"
+            }
+        },
+        "Producto": {
+            "type": "object",
+            "properties": {
+                "id_producto": {
+                    "type": "number",
+                    "description": "Codigo que permite identificar al producto"
+                },
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del producto"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion breve del producto"
+                },
+                "precio": {
+                    "type": "float",
+                    "description": "Precio del producto"
+                },
+                "marca": {
+                    "type": "string",
+                    "description": "Nombre de la marca del producto"
+                },
+                "cantidad": {
+                    "type": "string",
+                    "description": "Cantidad de productos en stock"
+                },
+                "categoria": {
+                    "type": "string",
+                    "description": "Categoria del producto"
+                }
+            }
+        },
+        "Nuevoproducto": {
+            "type": "object",
+            "properties": {
+                "nombre": {
+                    "type": "string",
+                    "description": "Nombre del producto"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion breve del producto"
+                },
+                "precio": {
+                    "type": "float",
+                    "description": "Precio del producto"
+                },
+                "marca": {
+                    "type": "string",
+                    "description": "Nombre de la marca del producto"
+                },
+                "cantidad": {
+                    "type": "string",
+                    "description": "Cantidad de productos en stock"
+                },
+                "categoria": {
+                    "type": "string",
+                    "description": "Categoria del producto"
+                }
+            }
+        },
+        "Productos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Producto"
+            }
+        },
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id_usuario": {
+                    "type": "number",
+                    "description": "Codigo que permite identificar al usuario"
+                },
+                "nombre_us": {
+                    "type": "string",
+                    "description": "Nombre del usuario"
+                },
+                "correo_us": {
+                    "type": "string",
+                    "description": "Correo del usuario"
+                },
+                "contrasena_us": {
+                    "type": "string",
+                    "description": "Contrasena del usuario"
+                }
+            }
+        },
+        "Nuevousuario": {
+            "type": "object",
+            "properties": {
+                "nombre_us": {
+                    "type": "string",
+                    "description": "Nombre del usuario"
+                },
+                "correo_us": {
+                    "type": "string",
+                    "description": "Correo del usuario"
+                },
+                "contrasena_us": {
+                    "type": "string",
+                    "description": "Contrasena del usuario"
+                }
+            }
+        },
+        "Usuarios": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Usuario"
+            }
+        },
+        "Venta": {
+            "type": "object",
+            "properties": {
+                "id_venta": {
+                    "type": "number",
+                    "description": "identificador de la venta"
+                },
+                "id_usuario": {
+                    "type": "number",
+                    "description": "identificador del usuario"
+                },
+                "id_carrito": {
+                    "type": "number",
+                    "description": "identificador del carrito"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "Cantidad de productos vendidos"
+                },
+                "precio_unitario": {
+                    "type": "float",
+                    "description": "Precio total de la venta"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha de la venta"
+                }
+            }
+        },
+        "Nuevaventa": {
+            "type": "object",
+            "properties": {
+                "id_usuario": {
+                    "type": "number",
+                    "description": "identificador del usuario"
+                },
+                "id_carrito": {
+                    "type": "number",
+                    "description": "identificador del carrito"
+                },
+                "cantidad": {
+                    "type": "number",
+                    "description": "Cantidad de productos vendidos"
+                },
+                "precio_unitario": {
+                    "type": "float",
+                    "description": "Precio por producto"
+                },
+                "fecha": {
+                    "type": "string",
+                    "description": "Fecha de la venta"
+                }
+            }
+        },
+        "Ventas": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Venta"
+            }
+        },
+        "Carrito": {
+            "type": "object",
+            "properties": {
+                "id_carrito": {
+                    "type": "number",
+                    "description": "identificador del carrito"
+                },
+                "id_usuario": {
+                    "type": "number",
+                    "description": "identificador del usuario"
+                },
+                "id_producto": {
+                    "type": "number",
+                    "description": "identificador del producto"
+                },
+                "cantidad": {
+                    "type": "string",
+                    "description": "Cantidad de productos en el carrito"
+                },
+                "estado_carrito": {
+                    "type": "string",
+                    "description": "Estado de envio del carrito"
+                },
+                "precio_total": {
+                    "type": "float",
+                    "description": "Precio total del carrito"
+                }
+            }
+        },
+        "Nuevocarrito": {
+            "type": "object",
+            "properties": {
+                "id_usuario": {
+                    "type": "number",
+                    "description": "identificador del usuario"
+                },
+                "id_producto": {
+                    "type": "number",
+                    "description": "identificador del producto"
+                },
+                "cantidad": {
+                    "type": "string",
+                    "description": "Cantidad de productos en carrito"
+                },
+                "estado_carrito": {
+                    "type": "string",
+                    "description": "Estado de envio del carrito"
+                },
+                "precio_total": {
+                    "type": "float",
+                    "description": "Precio total de carrito"
+                }
+            }
+        },
+        "Carritos": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Carrito"
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+.container {
+    margin-top: 100px; /* separacion de productos de nav */
+}
+/* Estilos de la barra de navegación */
+nav {
+    background-color: #43797a;
+    height: 100px;
+    line-height: 100px;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.brand-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: 'Castellar', sans-serif;
+}
+
+.logo-img {
+    max-height: 120%; /* Ajusta este valor según tus necesidades */
+    max-width: 130px;
+    margin-right: 3px;
+}
+
+.right {
+    height: 100%;
+    margin-right: 15px; /* Ajusta este valor según tus necesidades */
+    display: flex;
+    align-items: center;
+}
+
+/* Ajusta el margin-left y margin-right para centrar y espaciar los íconos */
+.right li {
+    margin-left: 1065px; /* Esto empujará los elementos hacia la derecha */
+    margin-right: -1055px; /* Ajusta este valor según tus necesidades */
+}
+
+/* Estilos de las pestañas/tabs */
+.tabs {
+    margin-top: 15px;
+    margin-top: 55px; /* Ajusta este valor para reducir el espacio hacia arriba */
+}
+
+/* Estilos del modal de ayuda */
+#ayudaButton {
+    margin-top: 10px; /* Ajusta este valor para bajar el icono de ayuda */
+    display: flex;
+    margin-right: -16px;
+    align-items: center;
+    margin-left: -68px;
+}
+
+/* Estilos de los íconos en las pestañas/tabs */
+.tabs a i {
+    margin-right: 5px;
+}
+/*estilos para Inicio de sesion*/
+.right li a {
+    display: flex;
+    align-items: center;
+}
+
+.right li a i {
+    margin-right: 3px;
+}
+
+.right li a span {
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    margin-top: 4px; /* Ajusta este valor para reducir el espacio hacia arriba */
+    margin-bottom: 0; /* Elimina cualquier margen hacia abajo */
+    line-height: 1.3;
+    font-size: 15px;
+    font-weight: bold;
+    color:rgb(255, 255, 255);
+}
+
+.btn-carrito {
+    background-color: #d8850f; /* Cambia el color de fondo según tus necesidades */
+    color: white; /* Cambia el color del texto según tus necesidades */
+}
+
+.btn-carrito:hover {
+    background-color: #d8850f; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}

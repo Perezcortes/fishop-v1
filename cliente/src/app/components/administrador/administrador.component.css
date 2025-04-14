@@ -1,0 +1,96 @@
+/* Estilos para la tabla */
+.default {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.default td, .default th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.default th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para el container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para el modal */
+#modalModificarProducto {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.modal-content {
+    border: 1px solid #78909c;
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Estilos para los botones */
+.waves-effect.btn-large {
+    margin-top: 10px;
+}
+
+.btn-large.brown {
+    color: #fff;
+}
+
+/* Estilos adicionales según tus necesidades */
+.space {
+    margin-right: 10px;
+}
+
+/* Estilos para los botones */
+.btn {
+    display: inline-flex; /* Cambiado a flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    margin-right: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para botones de editar */
+.btn-edit {
+    color: #fff;
+    background-color: #1ace20;
+    padding: 7px;
+}
+
+/* Estilo para botones de eliminar */
+.btn-delete {
+    color: #fff;
+    background-color: #ed1708;
+    padding: 7px;
+}
+
+/* Estilo para botones de agregar */
+.btn-add {
+    color: #fff;
+    background-color: #2795ef;
+    padding: 7px;
+}
+/* Ajustes para la fila de botones */
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Distribuye los botones uniformemente */
+}

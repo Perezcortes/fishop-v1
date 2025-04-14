@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Otras etiquetas head -->
+    <link rel="stylesheet" href="../producto/producto.component.css">
+    <link rel="stylesheet" src="../../../assets/materialize-css/dist/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!--Empieza seccion del panel del admin-->
+    <div class="container">
+        <h2 class="center">Panel Administrador</h2>
+        <h2 class="center">Productos</h2>
+        <table class="default" *ngIf="productos !== undefined">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Cantidad</th>
+                <th>Categoria</th>
+                <th>Acciones</th>
+            </tr>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.marca}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>{{producto.categoria}}</td>
+                <td class="actions">
+                    <a href="javascript: void(0);" class="btn btn-edit"
+                        (click)="modificar_producto(producto.id_producto)">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a href="javascript: void(0);" class="btn btn-delete"
+                        (click)="eliminar_producto(producto.id_producto)">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <a href="javascript: void(0);" class="btn btn-add" (click)="insertar_Producto()">
+            <i class="material-icons">add</i>Agregar un nuevo producto</a>
+        <a href="javascript: void(0);" class="btn btn-filter" (click)="verPor()">
+            <i class="material-icons">visibility</i>Ver por
+        </a>
+        <div id="modalModificarProducto" class="modal">
+            <div class="modal-content">
+                <div class="row" style="margin-bottom: 0px !important;">
+                    <div class="col s12">
+                        <h5 class="center">Actualizar Producto</h5>
+                    </div>
+                </div>
+                <div style="border: .5px solid #78909c; padding: 10px;">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label class="active" for="nombre">Nombre </label>
+                            <input id="nombre" [(ngModel)]="productoNuevo.nombre" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Descripción </label>
+                            <input [(ngModel)]="producto.descripcion" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Precio </label>
+                            <input [(ngModel)]="producto.precio" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <label class="active">Marca </label>
+                            <input [(ngModel)]="producto.marca" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Cantidad </label>
+                            <input [(ngModel)]="producto.cantidad" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Categoria </label>
+                            <input [(ngModel)]="producto.categoria" type="text" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 center">
+                            <input type="submit" class="btn" (click)="guardarModificarProducto()" value="Enviar">
+                        </div>
+                        <div class="col s6 center">
+                            <a class="modal-close btn">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modalInsertarProducto" class="modal">
+            <div class="modal-content">
+                <div class="row" style="margin-bottom: 0px !important;">
+                    <div class="col s12">
+                        <h5 class="center">Insertar Producto</h5>
+                    </div>
+                </div>
+                <div style="border: .5px solid #78909c; padding: 10px;">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label class="active" for="nombre">Nombre </label>
+                            <input id="nombre" [(ngModel)]="producto.nombre" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Descripción </label>
+                            <input [(ngModel)]="producto.descripcion" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Precio </label>
+                            <input [(ngModel)]="producto.precio" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <label class="active">Marca </label>
+                            <input [(ngModel)]="producto.marca" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Cantidad </label>
+                            <input [(ngModel)]="producto.cantidad" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <label class="active">Categoria </label>
+                            <input [(ngModel)]="producto.categoria" type="text" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 center">
+                            <input type="submit" class="btn" (click)="guardarNuevoProducto()" value="Enviar">
+                        </div>
+                        <div class="col s6 center">
+                            <a class="modal-close btn">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para filtros -->
+    <div id="modalVerPor" class="modal">
+        <div class="modal-content">
+            <h5 class="center">Ver productos por:</h5>
+            <div class="input-field col s12">
+                <select [(ngModel)]="filtroSeleccionado">
+                    <option value="" disabled selected>Elige una opción</option>
+                    <option value="marca">Marca</option>
+                    <option value="cantidad">Cantidad</option>
+                    <option value="categoria">Categoría</option>
+                </select>
+                <label>Filtrar por:</label>
+            </div>
+            <!-- Nuevo campo de entrada de texto para el filtro -->
+            <div *ngIf="filtroSeleccionado === 'marca'">
+                <div class="input-field col s12">
+                    <label class="active" for="filtroTexto">Nombre de la Marca</label>
+                    <input id="filtroTexto" [(ngModel)]="filtroTexto" type="text" class="validate">
+                </div>
+            </div>
+            <div *ngIf="filtroSeleccionado === 'categoria'">
+                <div class="input-field col s12">
+                    <label class="active" for="filtroTexto">Nombre de la Categoria</label>
+                    <input id="filtroTexto" [(ngModel)]="filtroTexto" type="text" class="validate">
+                </div>
+            </div>
+            <div *ngIf="filtroSeleccionado === 'cantidad'">
+                <div class="input-field col s12">
+                    <label class="active" for="filtroTexto">¿Que cantidad?</label>
+                    <input id="filtroTexto" [(ngModel)]="filtroTexto" type="text" class="validate">
+                </div>
+            </div>
+            <!-- Sección para mostrar resultados -->
+            <div *ngIf="productosFiltrados && productosFiltrados.length > 0">
+                <h6>Resultados:</h6>
+                <table class="default">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Marca</th>
+                        <th>Cantidad</th>
+                        <th>Categoria</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr *ngFor="let producto of productosFiltrados">
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.descripcion}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>{{producto.marca}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>{{producto.categoria}}</td>
+                        <td class="actions">
+                            <a href="javascript: void(0);" class="btn btn-edit"
+                                (click)="modificar_producto(producto.id_producto)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a href="javascript: void(0);" class="btn btn-delete"
+                                (click)="eliminar_producto(producto.id_producto)">
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- Botón para aplicar el filtro -->
+            <a class="btn" (click)="aplicarFiltro()">Aplicar</a>
+            <!-- Botón para salir del modal -->
+            <a class="btn" (click)="salirDelModal()">Salir</a>
+        </div>
+    </div>
+
+    <!--Empiezan seccion para ventas-->
+    <div class="container">
+        <h2 class="center">Historial de ventas</h2>
+        <table class="default" *ngIf="ventas !== undefined">
+            <tr>
+                <th>Numero de venta</th>
+                <th>Usuario</th>
+                <th>Numero de carrito</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+            <tr *ngFor="let venta of ventas">
+                <td>{{venta.id_venta}}</td>
+                <td>{{venta.id_usuario}}</td>
+                <td>{{venta.id_carrito}}</td>
+                <td>{{venta.cantidad}}</td>
+                <td>{{venta.precio_unitario}}</td>
+                <td>{{venta.fecha}}</td>
+                <td class="actions">
+                    <a href="javascript: void(0);" class="btn btn-delete" (click)="eliminar_venta(venta.id_venta)">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col s12">
+                <a class="btn btn-view" (click)="mostrarPorFecha()">
+                    <i class="material-icons left">visibility</i>Mostrar ventas por fecha
+                </a>
+            </div>
+        </div>
+        <!-- Modal para mostrar por fecha -->
+        <div id="modalMostrarPor" class="modal">
+            <div class="modal-content">
+                <!-- Contenido del modal -->
+                <h4>Mostrar venta de una fecha en específico</h4>
+                <p>Selecciona la fecha para mostrar las ventas:</p>
+                <!-- Datepicker input -->
+                <div class="input-field col s12">
+                    <input type="text" id="fechaInput" class="datepicker">
+                    <label for="fechaInput">Fecha</label>
+                </div>
+                <!-- Mostrar la tabla con los resultados -->
+                <table class="default" *ngIf="respuestaServidor">
+                    <tr>
+                        <!-- Encabezados de la tabla -->
+                        <th>Numero de venta</th>
+                        <th>Usuario</th>
+                        <th>Numero de carrito</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <!-- Fila de la tabla -->
+                    <tr>
+                        <!-- Ajusta según las propiedades de tu objeto de respuesta -->
+                        <td>{{respuestaServidor.id_venta}}</td>
+                        <td>{{respuestaServidor.id_usuario}}</td>
+                        <td>{{respuestaServidor.id_carrito}}</td>
+                        <td>{{respuestaServidor.cantidad}}</td>
+                        <td>{{respuestaServidor.precio_unitario}}</td>
+                        <td>{{respuestaServidor.fecha}}</td>
+                        <td class="actions">
+                            <a href="javascript: void(0);" class="btn btn-delete"
+                                (click)="eliminar_venta(respuestaServidor.id_venta)">
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!-- Botón de búsqueda -->
+                <a class="btn" (click)="buscarPorFecha()">Buscar</a>
+                <!-- Botón para salir del modal -->
+                <a class="btn modal-close" (click)="salirDelModalFecha()">Salir</a>
+            </div>
+        </div>
+        <!-- Modal para calcular total -->
+        <div id="modalCalcularTotal" class="modal">
+            <div class="modal-content">
+                <h4>Calcular Total</h4>
+                <form>
+                    <div class="input-field col s12">
+                        <input type="number" id="id_ventaInput" [(ngModel)]="id_venta" name="id_venta" text="Ingrese el ID de venta">
+                        <label for="id_ventaInput">ID de Venta</label>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!-- Corrección: agregar el argumento a la función calcularTotal -->
+                <a class="btn" (click)="calcularTotal(id_venta)">Calcular</a>
+                <a class="btn modal-close">Salir</a>
+                <!-- Muestra el resultado directamente en el botón -->
+        <a class="btn-totalcalculo" *ngIf="resultadoTotal !== undefined">Total: {{ resultadoTotal.Total_venta }}</a>
+            </div>
+        </div>
+        <!-- Botón para abrir el modal de calcular total -->
+        <div class="row">
+            <div class="col s12">
+                <a class="btn btn-total modal-trigger" href="#modalCalcularTotal">
+                    <i class="material-icons left">visibility</i>Total de venta
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--Empieza seccion de carrito de compras-->
+    <div class="container">
+        <h2 class="center">Carrito de compras-usuarios</h2>
+        <table class="default" *ngIf="carrito !== undefined">
+            <tr>
+                <th>Numero de carrito</th>
+                <th>Nombre producto</th>
+                <th>Cantidad</th>
+                <th>Estado del carrito</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+            <tr *ngFor="let carrito of carritos">
+                <td>{{ carrito.id_carrito }}</td>
+                <td>{{ carrito.nombre }}</td>
+                <td>{{ carrito.cantidad }}</td>
+                <td>{{ carrito.estado_carrito }}</td>
+                <td>{{ carrito.precio_total }}</td>
+                <td class="actions">
+                    <a href="javascript: void(0);" class="btn btn-delete" (click)="eliminarcarrito(carrito.id_carrito)">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--Empieza seccion de inf de usuarios-->
+    <div class="container">
+        <h2 class="center">Listado de todos los Usuarios</h2>
+        <table class="default" *ngIf="usuarios !== undefined">
+            <tr>
+                <th>ID usuario</th>
+                <th>Nombre usuario</th>
+                <th>Correo usuario</th>
+                <th>Acciones</th>
+            </tr>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.id_usuario}}</td>
+                <td>{{usuario.nombre_us}}</td>
+                <td>{{usuario.correo_us}}</td>
+                <td class="actions">
+                    <a href="javascript: void(0);" class="btn btn-delete"
+                        (click)="eliminar_usuario(usuario.id_usuario)">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

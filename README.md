@@ -54,6 +54,9 @@ JWT_SECRET=tu_secreto_jwt
 ```bash
 npm start
 # Servidor en http://localhost:5000
+
+Documentación:
+# http://localhost:3000/documentacion/
 ```
 
 ## 💻 Configuración del Frontend

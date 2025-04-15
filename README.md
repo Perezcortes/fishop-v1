@@ -83,12 +83,15 @@ ng serve
 
 ## 🛠 Comandos útiles
 
-| Función               | Comando                     |
-|-----------------------|-----------------------------|
-| Iniciar backend       | `cd server && npm start`    |
-| Iniciar frontend      | `cd cliente && ng serve`    |
-| Instalar dependencias | `npm install` en cada carpeta |
-| Generar build producción | `cd cliente && ng build --prod` |
+| Función                   | Comando                                |
+|---------------------------|----------------------------------------|
+| Iniciar backend           | `cd server && npm start`               |
+| Iniciar frontend          | `cd cliente && ng serve`               |
+| Instalar dependencias     | `npm install` en cada carpeta          |
+| Generar build producción  | `cd cliente && ng build --prod`        |
+| Solucionar collation utf8 | Reemplazar `utf8mb4_0900_ai_ci` con `utf8mb4_general_ci` en scripts SQL |
+| Error de Angular Routing  | Añadir `{ useHash: true }` en RouterModule en Angular |
+| Error de CORS             | Verificar configuración del middleware `cors()` en Express |
 
 ## 📂 Estructura técnica
 
@@ -147,5 +150,3 @@ cliente/
 **Desarrollador**: José Pérez  
 **Email**: 9531447499a@gmail.com  
 **GitHub**: [Perezcortes](https://github.com/Perezcortes)
-
----

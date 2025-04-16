@@ -1,22 +1,56 @@
+/* Fondo general */
 body {
-  background-color: #f5f5f5;
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-.container {
-  margin-top: 50px;
+/* Contenedor principal centrado */
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.login-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Título y subtítulo */
+.login-wrapper h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-#modalIngreso {
-  max-width: 600px;
+.login-wrapper p {
+  margin-top: 0;
+  color: #757575;
 }
 
-#modalIngreso .input-field {
-  margin-bottom: 20px; /* Ajusta la distancia entre los campos y los bordes del modal */
+/* Botones */
+.btn,
+.modal-footer .btn {
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 15px;
+}
+
+/* Modal */
+.modal {
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.modal-content h5 {
+  font-weight: 600;
+}
+
+/* Responsive padding */
+@media (max-width: 600px) {
+  .login-wrapper {
+    padding: 30px 20px;
+  }
 }

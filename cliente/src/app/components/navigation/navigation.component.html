@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>FISHOP</title>
     <link rel="website icon" type="png" href="../../../assets/logo.png">
     <!-- Import Google Icon Font -->
-    <link rel="stylesheet" src="../../../assets/materialize-css/dist/css/materialize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Let the browser know the website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,33 +16,35 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
+                <!-- Logo y Nombre -->
                 <a routerLink="/home/principal" class="brand-logo">
                     <img src="../../../assets/logonav.png" alt="Logo" class="logo-img">FISHOP
                 </a>
+                <!-- Menú hamburguesa -->
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <!-- Menú de Navegación -->
                 <ul class="right hide-on-med-and-down">
-                    <li><a id="ayudaButton" class="modal-trigger" href="#modalSearch"><i
-                                class="material-icons">search</i>¿Qué estás buscando?</a></li>
-                    <li><a routerLink="/home/login"><i class="material-icons">account_circle</i><span>¡Hola! Inicia
-                                sesión<br>Ó puedes registrarte</span></a></li>
+                    <li><a id="ayudaButton" class="modal-trigger" href="#modalSearch"><i class="material-icons">search</i>¿Qué estás buscando?</a></li>
+                    <li><a routerLink="/home/login"><i class="material-icons">account_circle</i><span>¡Hola! Inicia sesión<br>Ó puedes registrarte</span></a></li>
                     <li><a routerLink="/home/carrito"><i class="material-icons">local_grocery_store</i></a></li>
-                    <li><a routerLink="/home/producto"><i class="material-icons">more_vert</i><span>Admin</span></a>
-                    </li>
+                    <li><a routerLink="/home/producto"><i class="material-icons">more_vert</i><span>Admin</span></a></li>
                 </ul>
             </div>
         </nav>
     </div>
-    <!--<div class="row">
-        <div class="col s12">
-            <ul class="tabs">
-                <li class="tab col s3"><a routerLink="#!">Categorias</a></li>
-                <li class="tab col s3"><a routerLink="#!">Señuelos</a></li>
-                <li class="tab col s3"><a routerLink="#!">Combos</a></li>
-                <li class="tab col s3"><a routerLink="#!">Accesorios</a></li>
-            </ul>
-        </div>
-    </div>-->
+
+    <!-- Sidenav para el menú móvil -->
+    <ul id="mobile-demo" class="sidenav">
+        <li><a id="ayudaButton" class="modal-trigger" href="#modalSearch"><i class="material-icons">search</i>¿Qué estás buscando?</a></li>
+        <li><a routerLink="/home/login"><i class="material-icons">account_circle</i>¡Hola! Inicia sesión o regístrate</a></li>
+        <li><a routerLink="/home/carrito"><i class="material-icons">local_grocery_store</i>Carrito</a></li>
+        <li><a routerLink="/home/producto"><i class="material-icons">more_vert</i>Admin</a></li>
+    </ul>
+
     <!-- Modal de búsqueda -->
-    <div #modalSearch id="modalSearch" class="modal">
+    <div id="modalSearch" class="modal">
         <div class="modal-content">
             <h4>¿Qué estás buscando?</h4>
             <div class="input-field">
@@ -64,6 +66,13 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicializa los elementos del menú hamburguesa
+            const elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems);
+        });
+    </script>
 </body>
 
 </html>

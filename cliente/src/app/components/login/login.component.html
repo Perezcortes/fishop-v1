@@ -1,85 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión</title>
-  <link rel="stylesheet" href="../login/login.component.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fishop | Iniciar Sesión</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="container">
-    <div class="row heading">
-      <div class="col s12 center-align">
-        <h4>Iniciar Sesión</h4>
+  <div class="login-wrapper center-align">
+    <h4 class="blue-text text-darken-2">Fishop</h4>
+    <p class="grey-text">Venta de equipo de pesca profesional</p>
+
+    <form>
+      <div class="input-field">
+        <i class="material-icons prefix">email</i>
+        <input type="email" [(ngModel)]="usuarioLogin.correo_us" name="correo_login" placeholder="Correo" required />
+      </div>
+
+      <div class="input-field">
+        <i class="material-icons prefix">lock</i>
+        <input type="password" [(ngModel)]="usuarioLogin.contrasena_us" name="contrasena_login" placeholder="Contraseña" required />
+      </div>
+
+      <a (click)="logueo()" class="waves-effect waves-light btn blue darken-2">
+        <i class="material-icons left">login</i>Iniciar sesión
+      </a>
+
+      <a class="btn modal-trigger green darken-1" href="#modalIngreso">
+        <i class="material-icons left">person_add</i>Registrarse
+      </a>
+    </form>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div id="modalIngreso" class="modal">
+    <div class="modal-content">
+      <h5 class="blue-text text-darken-2">Registro de Usuario</h5>
+      <p class="grey-text">Completa tus datos para crear una cuenta</p>
+
+      <div class="input-field">
+        <input id="nombre" type="text" class="validate" [(ngModel)]="usuarioRegistro.nombre_us" name="nombre_registro" />
+        <label for="nombre">Nombre de usuario</label>
+      </div>
+
+      <div class="input-field">
+        <input id="correo" type="email" class="validate" [(ngModel)]="usuarioRegistro.correo_us" name="correo_registro" />
+        <label for="correo">Correo</label>
+      </div>
+
+      <div class="input-field">
+        <input id="contrasena" type="password" class="validate" [(ngModel)]="usuarioRegistro.contrasena_us" name="contrasena_registro" />
+        <label for="contrasena">Contraseña</label>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col s12 m6 offset-m3 login-container">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">email</i>
-              <input type="email" [(ngModel)]="usuario.correo_us" name="correo" placeholder="Correo">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">security</i>
-              <input type="password" [(ngModel)]="usuario.contrasena_us" name="contraseña" placeholder="Contraseña">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12 center-align">
-              <a (click)="logueo()" class="waves-effect waves-light btn-login">
-                <i class="material-icons left">send</i>Iniciar sesión
-              </a>
-              <button (click)="Registrarse()" class="btn-register waves-effect waves-light modal-trigger">
-                Registrarse
-                <i class="material-icons left">edit</i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Modal INGRESO USUARIO -->
-    <div id="modalIngreso" class="modal">
-      <div class="modal-content">
-        <h4>Nuevo Usuario</h4>
-        <div class="row">
-          <div class="input-field col s12">
-            <label>Nombre usuario </label>
-            <input [(ngModel)]="usuario.nombre_us" type="text" class="validate">
-          </div>
-          <div class="input-field col s12">
-            <label>Correo </label>
-            <input [(ngModel)]="usuario.correo_us" type="text" class="validate">
-          </div>
-          <div class="input-field col s6">
-            <label>Contraseña </label>
-            <input [(ngModel)]="usuario.contrasena_us" type="text" class="validate">
-          </div>
-        </div>
-        <div class="row">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close btn-flat">Cancelar</a>
-        <button (click)="GuardarDatos()" class="btn waves-effect waves-light">Guardar Datos</button>
-      </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat grey-text text-darken-2">Cancelar</a>
+      <button (click)="GuardarDatos()" class="btn green darken-1">Guardar</button>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.modal');
+      M.Modal.init(elems);
+    });
+  </script>
 </body>
-
 </html>

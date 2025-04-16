@@ -1,6 +1,8 @@
+/* Ajuste de márgenes y padding para mejorar la visibilidad en móviles */
 .container {
-    margin-top: 100px; /* separacion de productos de nav */
+    margin-top: 50px; /* Separación de productos de la barra de navegación */
 }
+
 /* Estilos de la barra de navegación */
 nav {
     background-color: #43797a;
@@ -35,19 +37,18 @@ nav {
     align-items: center;
 }
 
-/* Ajusta el margin-left y margin-right para centrar y espaciar los íconos */
-.right li {
-    margin-left: 1065px; /* Esto empujará los elementos hacia la derecha */
-    margin-right: -1055px; /* Ajusta este valor según tus necesidades */
+/* Ajuste para el menú hamburguesa en pantallas pequeñas */
+@media only screen and (max-width: 992px) {
+    .right {
+        display: none;
+    }
+
+    .sidenav-trigger {
+        display: block;
+    }
 }
 
-/* Estilos de las pestañas/tabs */
-.tabs {
-    margin-top: 15px;
-    margin-top: 55px; /* Ajusta este valor para reducir el espacio hacia arriba */
-}
-
-/* Estilos del modal de ayuda */
+/* Estilos para el modal de ayuda */
 #ayudaButton {
     margin-top: 10px; /* Ajusta este valor para bajar el icono de ayuda */
     display: flex;
@@ -56,30 +57,51 @@ nav {
     margin-left: -68px;
 }
 
-/* Estilos de los íconos en las pestañas/tabs */
-.tabs a i {
-    margin-right: 5px;
-}
-/*estilos para Inicio de sesion*/
-.right li a {
+/* Estilo para las tarjetas de productos */
+.card {
+    width: 100%;
+    height: 100%;
+    max-width: 250px; /* Limita el ancho de las tarjetas */
+    margin: 10px; /* Añadimos espacio entre las tarjetas */
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Asegura que los elementos dentro de la tarjeta se apilen verticalmente */
 }
 
-.right li a i {
-    margin-right: 3px;
+/* Ajuste para el nombre del producto */
+.card-title {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    overflow: hidden; /* Oculta el texto que sobresalga */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es muy largo */
+    font-size: 16px;
 }
 
-.right li a span {
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    margin-top: 4px; /* Ajusta este valor para reducir el espacio hacia arriba */
-    margin-bottom: 0; /* Elimina cualquier margen hacia abajo */
-    line-height: 1.3;
-    font-size: 15px;
-    font-weight: bold;
-    color:rgb(255, 255, 255);
+/* Estilos de la imagen en la tarjeta */
+.card-image img {
+    width: 100%;
+    height: 200px; /* Limita la altura de la imagen */
+    object-fit: cover;
 }
 
+/* Estilo para el contenido de la tarjeta */
+.card-content {
+    padding: 10px;
+    flex-grow: 1; /* Asegura que el contenido crezca para ocupar el espacio disponible */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustes para el botón de agregar al carrito */
+.card-reveal .btn-carrito {
+    margin-top: auto; /* Asegura que el botón de "Agregar al carrito" quede al final de la tarjeta */
+}
+
+/* Pestañas para productos y otras opciones */
+.tabs {
+    margin-top: 15px;
+    margin-top: 55px; /* Ajusta este valor para reducir el espacio hacia arriba */
+}
+
+/* Botones */
 .btn-carrito {
     background-color: #d8850f; /* Cambia el color de fondo según tus necesidades */
     color: white; /* Cambia el color del texto según tus necesidades */
@@ -87,4 +109,21 @@ nav {
 
 .btn-carrito:hover {
     background-color: #d8850f; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+
+/* Responsividad para pantallas pequeñas (p.ej. móviles) */
+@media only screen and (max-width: 600px) {
+    .card {
+        height: 350px; /* Ajuste de altura en móviles */
+        width: 100%;
+    }
+
+    .container {
+        margin-top: 50px; /* Ajusta la separación en móviles */
+    }
+
+    .right {
+        display: none;
+    }
 }
